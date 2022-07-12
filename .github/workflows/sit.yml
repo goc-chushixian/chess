@@ -39,7 +39,7 @@ jobs:
           context: .
           file: dockerfile.sit
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/project:${{env.SHORT_SHA}}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/project:${{env.SHORT_SHA}}_sit
       
       - name: Build success
         run: echo "build image success"
