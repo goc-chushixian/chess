@@ -105,6 +105,7 @@ class Square extends React.Component {
       }
       return (
         <div className="game">
+        <div>{process.env.NAME}</div>
           <div className="game-board">
             <Board 
               squares ={current.squares}
