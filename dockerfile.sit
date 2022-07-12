@@ -1,7 +1,4 @@
 FROM node:16-alpine AS Builder
-ENV NAME="AAA"
-ENV AGE=1000
-ENV SEX="FEMALE"
 RUN mkdir -p /code_run_docker
 WORKDIR /code_run_docker
 ADD . /code_run_docker
@@ -10,5 +7,8 @@ RUN npm run build
 
 FROM node:16-alpine
 WORKDIR /code_run_docker
+ENV NAME="AAA"
+ENV AGE=1000
+ENV SEX="FEMALE"
 COPY --from=Builder /code_run_docker .
 CMD npm start
