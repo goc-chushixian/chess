@@ -1,10 +1,10 @@
 FROM node:16-alpine AS Builder
-RUN mkdir -p /code_run_docker
-WORKDIR /code_run_docker
-ADD . /code_run_docker
 ENV NAME="AAA"
 ENV AGE=1000
 ENV SEX="FEMALE"
+RUN mkdir -p /code_run_docker
+WORKDIR /code_run_docker
+ADD . /code_run_docker
 RUN npm install
 RUN npm run build
 
