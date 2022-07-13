@@ -2,10 +2,6 @@ FROM node:16-alpine AS Builder
 RUN mkdir -p /code_run_docker
 WORKDIR /code_run_docker
 ADD . /code_run_docker
-ENV NAME "CSX"
-ENV AGE 18
-ENV SEX "MALE"
-RUN npm install
 RUN npm run build
 
 FROM node:16-alpine
