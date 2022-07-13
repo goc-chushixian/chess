@@ -45,7 +45,7 @@ jobs:
         run: echo "build image success"
 
   DeploymentSitProject:
-   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       #工作流开始
       - name: workflow start
