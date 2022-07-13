@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src = " https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js " ></script>           
+    <script src=" https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js "></script>
 </head>
+
 <body>
-    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_2nm7k9ge.json" 
-    style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
+    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_2nm7k9ge.json"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
     <script>
-        let arr = [1,2,3,4,5,6];
-        console.log(Object.__proto__);
+        var asteroidCollision = function (asteroids) {
+            let res = [];
+            for (let i = 0; i < asteroids.length; i++) {
+                if (asteroids[i] > 0) {//只要大于0，即使栈中为负，也是相背而行，不会爆照
+                    res.push(asteroids[i])
+                } else {//此时小于0
+                    if (res.length == 0 || res[res.length - 1] < 0) {//同一方向
+                        res.push(asteroids[i])
+                    } else {
+                        let flag=0
+                        while (res[res.length-1]>0&&res[res.length - 1] <= Math.abs(asteroids[i])) {
+                            if(res[res.length - 1] == Math.abs(asteroids[i])){//相同两者都产生爆炸，不再将当前行星加入
+                                flag=1;
+                                res.pop();
+                                break;
+                            }
+                            res.pop();
+                        }
+                        if(flag!==1 && (res.length==0 || res[res.length-1]<0)){//同一方向
+                            res.push(asteroids[i])
+                        }
+                    }
+                }
+            }
+            return res;
+        }
     </script>
 </body>
+
 </html>
